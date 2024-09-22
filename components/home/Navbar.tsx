@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Left Section: Logo */}
         <div className="flex items-center space-x-3">
-          <span className="text-blue-600 text-xl font-bold tracking-wide">Byte Contest</span>
+         <Link href='/'> <span className="text-blue-600 text-xl font-bold tracking-wide">Byte Contest</span></Link>
           <span className="text-gray-500 text-sm font-light">by</span>
           <img
             src="/images/bytelight.png"
