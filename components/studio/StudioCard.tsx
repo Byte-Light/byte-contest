@@ -8,7 +8,7 @@ const StudioCard: React.FC = () => {
       <div className="relative flex-shrink-0 w-full lg:w-1/2">
         <div className="bg-purple-800 p-6 rounded-lg">
           <img
-            src="https://via.placeholder.com/400" // Replace with the actual image URL
+            src="images/book-cover.png" 
             alt="Phone designs"
             className="w-full h-auto object-contain"
           />

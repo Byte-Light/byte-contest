@@ -7,13 +7,13 @@ const BrandPackageSection: React.FC = () => {
       <div className="lg:w-1/2 flex justify-center lg:justify-start">
         <div className="relative w-full lg:w-auto">
           <img
-            src="/brand-package-mockup.png"
+            src="/images/bytelight.png"
             alt="Brand Guidelines"
             className="rounded-lg shadow-lg w-full lg:w-[32rem]"
           />
           <p className="absolute bottom-4 left-4 bg-purple-600 text-white p-2 rounded-full shadow-md text-sm flex items-center">
             <img
-              src="/brand-strategist.png"
+              src="/images/bytelight.png"
               alt="Brand Strategist"
               className="w-6 h-6 rounded-full mr-2"
             />

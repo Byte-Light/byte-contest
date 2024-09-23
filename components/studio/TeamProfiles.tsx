@@ -5,14 +5,14 @@ const TeamProfiles: React.FC = () => {
     {
       name: "Ashraf Alam",
       location: "San Francisco",
-      image: "/ashraf.png",
+      image: "/images/bytelight.png",
       description: `Ashraf brings deep expertise in strategic brand messaging and development. Prior to joining facebook in 2016, where he held several senior marketing roles, ashraf spent over a decade in global design agencies. Laura curiously seeks to understand the specific goals of her clients and thrives on translating them into a brand story that works.`,
       linkText: "Ashraf",
     },
     {
       name: "Sheikh Yeamin",
       location: "Berlin",
-      image: "/yeamin.png",
+      image: "/images/bytelight.png",
       description: `Yeamin combines entrepreneurship with a love for good design. Helping founders define their positioning and visual identity is Yeamin's forte. As a founder himself, Yeamin brings a deep understanding of what it takes to grow a brand on a budget. Before founding a graphic design marketplace, which was later sold to 99designs, Yeamin worked for a decade in digital agencies.`,
       linkText: "Yeamin",
     },

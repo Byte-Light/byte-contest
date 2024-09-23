@@ -35,7 +35,7 @@ const BrandingSection: React.FC = () => {
         <div className="w-full lg:w-auto relative">
           {/* Image mockups */}
           <img
-            src="/mockup1.png"
+            src="/images/bytelight.png"
             alt="Brand strategist"
             className="rounded-md shadow-lg w-full lg:w-96"
           />
@@ -45,7 +45,7 @@ const BrandingSection: React.FC = () => {
         </div>
         <div className="w-full lg:w-auto relative">
           <img
-            src="/mockup2.png"
+            src="/images/bytelight.png"
             alt="Top creative talent"
             className="rounded-md shadow-lg w-full lg:w-96"
           />

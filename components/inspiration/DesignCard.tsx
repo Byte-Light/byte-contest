@@ -11,25 +11,25 @@ type Design = {
 const designData: Design[] = [
   {
     id: 1,
-    imageUrl: 'https://via.placeholder.com/150', // Replace with the real image URL
+    imageUrl: 'images/book-cover.png', 
     username: 'noodlemie',
     likes: 31,
   },
   {
     id: 2,
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: 'images/book-cover.png',
     username: 'Boja',
     likes: 8,
   },
   {
     id: 3,
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: 'images/book-cover.png',
     username: 'Boja',
     likes: 41,
   },
   {
     id: 4,
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: 'images/book-cover.png',
     username: 'Shorttox™',
     likes: 93,
   },
