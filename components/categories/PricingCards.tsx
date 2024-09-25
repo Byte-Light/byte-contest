@@ -1,80 +1,84 @@
-import React from "react";
+import React from 'react';
 
-interface CardProps {
+interface Service {
   title: string;
   price: string;
   description: string;
-  features: string[];
-  popular?: boolean;
-  save?: string;
+  icon: React.ReactNode;
 }
 
-const cards: CardProps[] = [
+const services: Service[] = [
   {
-    title: "Logo & brand identity pack",
-    price: "from US$599",
-    description: "A logo plus digital and print essentials to kick-start your brand",
-    features: ["Logo", "Business card", "Letterhead & Envelope", "Facebook cover"],
-    popular: true,
-    save: "Save 39%",
+    title: 'WordPress theme design',
+    price: 'from US$599',
+    description: 'A custom WordPress theme that does everything you need it to',
+    icon: <span>🖥️</span>, // Replace this with a proper icon
   },
   {
-    title: "Logo design",
-    price: "from US$299",
-    description: "An unforgettable logo crafted for your brand",
-    features: [],
+    title: 'Landing page design',
+    price: 'from US$349',
+    description: 'Landing page that gets clicks',
+    icon: <span>📄</span>,
   },
   {
-    title: "Business card",
-    price: "from US$169",
-    description: "A unique card designed to build connections",
-    features: [],
+    title: 'Icon or button',
+    price: 'from US$199',
+    description: 'Professionally designed icons, buttons, and favicons for web & app',
+    icon: <span>🔘</span>,
   },
   {
-    title: "Logo & brand guide",
-    price: "from US$429",
-    description: "Extend your logo design into a real brand with matching fonts, colors, and style",
-    features: ["Logo", "Brand guide document"],
-    save: "Save US$70",
+    title: 'App Icon',
+    price: 'from US$199',
+    description: 'A stunning app icon guaranteed to get you downloads',
+    icon: <span>📱</span>,
   },
   {
-    title: "Logo & business card",
-    price: "from US$449",
-    description: "A logo and business card design that pair perfectly",
-    features: ["Logo", "Business card"],
-    save: "Save US$49",
+    title: 'Website Icon',
+    price: 'from US$199',
+    description: 'A website icon that users will recognize',
+    icon: <span>🌐</span>,
+  },
+  {
+    title: 'Form',
+    price: 'from US$349',
+    description: 'Forms customized to collect the data you need',
+    icon: <span>📋</span>,
+  },
+  {
+    title: 'App design',
+    price: 'from US$599',
+    description: 'A user-friendly app that gets downloads',
+    icon: <span>📱</span>,
+  },
+  {
+    title: 'iOS App',
+    price: 'from US$599',
+    description: "An iOS app design that'll be the apple of your eye",
+    icon: <span>🍎</span>,
   },
 ];
 
 const PricingCards: React.FC = () => {
   return (
-    <div className="w-full px-4 py-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cards.map((card, index) => (
+    <div className="py-8 px-4 max-w-7xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+        {services.map((service, index) => (
           <div
             key={index}
-            className="border rounded-lg shadow-md p-6 relative bg-white"
+            className="p-6 border border-gray-200 rounded-none shadow-md flex flex-col items-center text-center transition-shadow duration-300 hover:shadow-xl group cursor-pointer"
           >
-            {card.popular && (
-              <span className="absolute top-4 left-4 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
-                Most popular
-              </span>
-            )}
-            <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-            <p className="text-gray-600 mb-4">{card.price}</p>
-            {card.save && (
-              <span className="bg-blue-100 text-blue-500 text-xs px-2 py-1 rounded-full inline-block mb-4">
-                {card.save}
-              </span>
-            )}
-            <p className="text-gray-500 mb-4">{card.description}</p>
-            <ul className="text-gray-700 space-y-2">
-              {card.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center space-x-2">
-                  <span>✔</span> <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Icon */}
+            <div className="text-4xl mb-4 text-gray-600 group-hover:text-blue-600">
+              {service.icon}
+            </div>
+            {/* Title */}
+            <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600">
+              {service.title}
+            </h3>
+            {/* Price */}
+            <p className="text-gray-500 text-lg mb-2">{service.price}</p>
+            {/* Description */}
+            <p className="text-gray-400">{service.description}</p>
           </div>
         ))}
       </div>
