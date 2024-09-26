@@ -1,68 +1,34 @@
-import React from 'react';
-
-interface Service {
-  title: string;
-  price: string;
-  description: string;
-  icon: React.ReactNode;
-}
-
-const services: Service[] = [
-  {
-    title: 'WordPress theme design',
-    price: 'from US$599',
-    description: 'A custom WordPress theme that does everything you need it to',
-    icon: <span>🖥️</span>, // Replace this with a proper icon
-  },
-  {
-    title: 'Landing page design',
-    price: 'from US$349',
-    description: 'Landing page that gets clicks',
-    icon: <span>📄</span>,
-  },
-  {
-    title: 'Icon or button',
-    price: 'from US$199',
-    description: 'Professionally designed icons, buttons, and favicons for web & app',
-    icon: <span>🔘</span>,
-  },
-  {
-    title: 'App Icon',
-    price: 'from US$199',
-    description: 'A stunning app icon guaranteed to get you downloads',
-    icon: <span>📱</span>,
-  },
-  {
-    title: 'Website Icon',
-    price: 'from US$199',
-    description: 'A website icon that users will recognize',
-    icon: <span>🌐</span>,
-  },
-  {
-    title: 'Form',
-    price: 'from US$349',
-    description: 'Forms customized to collect the data you need',
-    icon: <span>📋</span>,
-  },
-  {
-    title: 'App design',
-    price: 'from US$599',
-    description: 'A user-friendly app that gets downloads',
-    icon: <span>📱</span>,
-  },
-  {
-    title: 'iOS App',
-    price: 'from US$599',
-    description: "An iOS app design that'll be the apple of your eye",
-    icon: <span>🍎</span>,
-  },
-];
+"use client"
+import React, { useState } from 'react';
+import services from './servicesData'; // Import the services data
 
 const PricingCards: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 8; // Number of services per page
+
+  // Calculate the range of services for the current page
+  const lastIndex = currentPage * pageSize;
+  const firstIndex = lastIndex - pageSize;
+  const currentServices = services.slice(firstIndex, lastIndex);
+
+  const totalPages = Math.ceil(services.length / pageSize);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
   return (
     <div className="py-8 px-4 max-w-7xl mx-auto">
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-0">
-        {services.map((service, index) => (
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {currentServices.map((service, index) => (
           <div
             key={index}
             className="p-6 border border-gray-200 rounded-none shadow-md flex flex-col items-center text-center transition-shadow duration-300 hover:shadow-xl group cursor-pointer"
@@ -81,6 +47,24 @@ const PricingCards: React.FC = () => {
             <p className="text-gray-400">{service.description}</p>
           </div>
         ))}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={handlePrevPage}
+          disabled={currentPage === 1}
+          className="px-4 py-2 mx-2 bg-gray-200 rounded-md"
+        >
+          Previous
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className="px-4 py-2 mx-2 bg-gray-200 rounded-md"
+        >
+          Next
+        </button>
       </div>
     </div>
   );
