@@ -17,8 +17,13 @@ const options: Option[] = [
   { label: 'Book & magazine', value: 'book' },
 ];
 
-const ScrollButtons: React.FC = () => {
+interface ScrollButtonsProps {
+  onSearch: (query: string) => void;
+}
+
+const ScrollButtons: React.FC<ScrollButtonsProps> = ({ onSearch }) => {
   const [selected, setSelected] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Reference for the scroll container
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -60,9 +65,31 @@ const ScrollButtons: React.FC = () => {
     }
   };
 
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    onSearch(e.target.value);
+  };
+
   return (
     <div className="space-y-6">
       <h2 className="text-lg font-semibold text-center">What do you need designed?</h2>
+
+      {/* Search Input */}
+      <div className="flex justify-center items-center mb-4">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Logo, website, book..."
+          className="px-4 py-2 border rounded-l-md"
+        />
+        <button
+          className="flex justify-center items-center w-12 h-12 bg-gray-200 hover:bg-cyan-600 text-gray-700 hover:text-white rounded-r-md transition-all"
+        >
+          <FiSearch />
+        </button>
+      </div>
 
       {/* Scrollable container with horizontal scroll and hidden scrollbar */}
       <div className="flex justify-center items-center">
@@ -75,16 +102,6 @@ const ScrollButtons: React.FC = () => {
           onMouseMove={handleMouseMove}
           style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
         >
-          {/* Search Button */}
-          <button
-            className={`flex items-center justify-center px-12 py-6 whitespace-nowrap rounded-lg border bg-gray-200 text-gray-700 hover:bg-gray-300 transition ${
-              selected === 'search' ? 'bg-cyan-600 text-white' : ''
-            }`}
-            onClick={() => setSelected('search')}
-          >
-            <FiSearch size={24} />
-          </button>
-
           {/* Options Buttons */}
           {options.map((option) => (
             <button

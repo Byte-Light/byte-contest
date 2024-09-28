@@ -1,17 +1,31 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import services from './servicesData'; // Import the services data
 
-const PricingCards: React.FC = () => {
+interface PricingCardsProps {
+  searchQuery: string; // Add the searchQuery prop
+}
+
+const PricingCards: React.FC<PricingCardsProps> = ({ searchQuery }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 8; // Number of services per page
+
+  // Filter services based on the search query
+  const filteredServices = services.filter((service) =>
+    service.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Reset the page to 1 whenever the search query changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
 
   // Calculate the range of services for the current page
   const lastIndex = currentPage * pageSize;
   const firstIndex = lastIndex - pageSize;
-  const currentServices = services.slice(firstIndex, lastIndex);
+  const currentServices = filteredServices.slice(firstIndex, lastIndex);
 
-  const totalPages = Math.ceil(services.length / pageSize);
+  const totalPages = Math.ceil(filteredServices.length / pageSize);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -27,6 +41,7 @@ const PricingCards: React.FC = () => {
 
   return (
     <div className="py-8 px-4 max-w-7xl mx-auto">
+      {/* Services Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {currentServices.map((service, index) => (
           <div
