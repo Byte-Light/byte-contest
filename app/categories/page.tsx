@@ -5,11 +5,12 @@ import React, { useState } from 'react';
 
 const Categories = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   return (
     <div>
-      <ScrollButtons onSearch={setSearchQuery} />
-      <PricingCards searchQuery={searchQuery} />
+      <ScrollButtons onSearch={setSearchQuery} onSelectCategory={setSelectedCategory} />
+      <PricingCards searchQuery={searchQuery} selectedCategory={selectedCategory} />
     </div>
   );
 };

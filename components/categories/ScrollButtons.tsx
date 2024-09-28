@@ -19,21 +19,19 @@ const options: Option[] = [
 
 interface ScrollButtonsProps {
   onSearch: (query: string) => void;
+  onSelectCategory: (category: string | null) => void; // Modify this prop to handle category
 }
 
-const ScrollButtons: React.FC<ScrollButtonsProps> = ({ onSearch }) => {
+const ScrollButtons: React.FC<ScrollButtonsProps> = ({ onSearch, onSelectCategory }) => {
   const [selected, setSelected] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Reference for the scroll container
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // State to track mouse dragging
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
 
-  // Handle mouse down
   const handleMouseDown = (e: React.MouseEvent) => {
     const container = scrollContainerRef.current;
     if (container) {
@@ -43,39 +41,39 @@ const ScrollButtons: React.FC<ScrollButtonsProps> = ({ onSearch }) => {
     }
   };
 
-  // Handle mouse up
   const handleMouseUp = () => {
     setIsDragging(false);
   };
 
-  // Handle mouse leave
   const handleMouseLeave = () => {
     setIsDragging(false);
   };
 
-  // Handle mouse move
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     e.preventDefault();
     const container = scrollContainerRef.current;
     if (container) {
       const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * 2; // 2 = scroll speed factor
+      const walk = (x - startX) * 2;
       container.scrollLeft = scrollLeft - walk;
     }
   };
 
-  // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     onSearch(e.target.value);
+  };
+
+  const handleSelectAllCategories = () => {
+    setSelected(null); // Reset category selection
+    onSelectCategory(null); // Show all categories
   };
 
   return (
     <div className="space-y-6">
       <h2 className="text-lg font-semibold text-center">What do you need designed?</h2>
 
-      {/* Search Input */}
       <div className="flex justify-center items-center mb-4">
         <input
           type="text"
@@ -91,7 +89,6 @@ const ScrollButtons: React.FC<ScrollButtonsProps> = ({ onSearch }) => {
         </button>
       </div>
 
-      {/* Scrollable container with horizontal scroll and hidden scrollbar */}
       <div className="flex justify-center items-center">
         <div
           className="flex items-center gap-4 overflow-x-auto py-4 px-2 no-scrollbar"
@@ -102,11 +99,23 @@ const ScrollButtons: React.FC<ScrollButtonsProps> = ({ onSearch }) => {
           onMouseMove={handleMouseMove}
           style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
         >
-          {/* Options Buttons */}
+          <button
+            onClick={handleSelectAllCategories}
+            className={`px-12 py-6 whitespace-nowrap rounded-lg border transition-colors ${
+              selected === null
+                ? 'bg-cyan-600 text-white shadow-md'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            All Categories
+          </button>
           {options.map((option) => (
             <button
               key={option.value}
-              onClick={() => setSelected(option.value)}
+              onClick={() => {
+                setSelected(option.value);
+                onSelectCategory(option.value); // Pass category to parent
+              }}
               className={`px-12 py-6 whitespace-nowrap rounded-lg border transition-colors ${
                 selected === option.value
                   ? 'bg-cyan-600 text-white shadow-md'
