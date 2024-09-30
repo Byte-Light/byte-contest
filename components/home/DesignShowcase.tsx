@@ -1,6 +1,18 @@
+"use client"
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const DesignShowcase = () => {
+  const router = useRouter();
+
+  const handleDesignButtonClick = () => {
+    router.push('/categories');
+  };
+
+  const handlePostButtonClick = () => {
+    router.push('/post-contest');
+  };
+
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center lg:space-x-8 py-16 px-8">
       {/* Left Side - Image and Design Elements */}
@@ -42,16 +54,32 @@ const DesignShowcase = () => {
             placeholder="What do you need designed?"
             className="w-full lg:w-auto p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-green-600"
           />
-          <button className="w-full lg:w-auto px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition duration-300">
+          <button
+            onClick={handleDesignButtonClick}
+            className="w-full lg:w-auto px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition duration-300"
+          >
             Get a design
+          </button>
+
+          <button
+            onClick={handlePostButtonClick}
+            className="w-full lg:w-auto px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition duration-300"
+          >
+            Post for a Contest
           </button>
         </div>
 
         {/* Popular Tags */}
         <div className="flex space-x-2 mt-4">
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-300">Logo design</button>
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-300">Website</button>
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-300">Branding</button>
+          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-300">
+            Logo design
+          </button>
+          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-300">
+            Website
+          </button>
+          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-300">
+            Branding
+          </button>
         </div>
       </div>
     </div>

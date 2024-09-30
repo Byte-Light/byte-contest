@@ -1,7 +1,7 @@
-import HowWorks from '@/components/HowWorks/HowWorks';
-import StepsWithButton from '@/components/HowWorks/StepsWithButton';
-import SupportSection from '@/components/HowWorks/SupportSection';
-import WhyUs from '@/components/HowWorks/WhyUs';
+import HowWorks from '@/components/howWorks/HowWorks';
+import StepsWithButton from '@/components/howWorks/StepsWithButton';
+import SupportSection from '@/components/howWorks/SupportSection';
+import WhyUs from '@/components/howWorks/WhyUs';
 import React from 'react';
 
 const HowItWorks = () => {
