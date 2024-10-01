@@ -9,9 +9,6 @@ const DesignShowcase = () => {
     router.push('/categories');
   };
 
-  const handlePostButtonClick = () => {
-    router.push('/post-contest');
-  };
 
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center lg:space-x-8 py-16 px-8">
@@ -61,12 +58,6 @@ const DesignShowcase = () => {
             Get a design
           </button>
 
-          <button
-            onClick={handlePostButtonClick}
-            className="w-full lg:w-auto px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition duration-300"
-          >
-            Post for a Contest
-          </button>
         </div>
 
         {/* Popular Tags */}

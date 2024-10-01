@@ -1,6 +1,7 @@
-import DesignerSection from '@/components/findDesigner/DesignerSection';
-import DesignSelection from '@/components/findDesigner/DesignSelection';
+
 import React from 'react';
+import DesignerSection from '../../components/findDesigner/DesignerSection';
+import DesignSelection from '../../components/findDesigner/DesignSelection';
 
 const FindADesigner = () => {
     return (
