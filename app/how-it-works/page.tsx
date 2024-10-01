@@ -1,4 +1,4 @@
-// #is it solved
+
 import HowWorks from '@/components/howWorks/HowWorks';
 import StepsWithButton from '@/components/howWorks/StepsWithButton';
 import SupportSection from '@/components/howWorks/SupportSection';

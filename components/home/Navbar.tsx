@@ -43,8 +43,8 @@ const Navbar: React.FC = () => {
           <a href="tel:01861328878" className="hidden md:block text-gray-800 hover:text-blue-600 transition duration-300">
             📞 01861328878
           </a>
-          <Link href="/login" className="text-gray-800 hover:text-blue-600 transition duration-300">
-            Log in
+          <Link href="/sign-up" className="text-gray-800 hover:text-blue-600 transition duration-300">
+            Sign Up
           </Link>
         </div>
 
