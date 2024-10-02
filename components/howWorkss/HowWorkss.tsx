@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HowWorks = () => {
+const HowWorkss = () => {
   return (
     <section className="bg-white py-12">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
@@ -30,4 +30,4 @@ const HowWorks = () => {
   );
 };
 
-export default HowWorks;
+export default HowWorkss;

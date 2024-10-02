@@ -1,6 +1,6 @@
 import React from "react";
 
-const DesignerSection: React.FC = () => {
+const DesignerSections: React.FC = () => {
   return (
     <div className="bg-white flex flex-col md:flex-row justify-between items-center px-6 md:px-16 py-12 md:py-24 space-y-8 md:space-y-0">
       {/* Text Section */}
@@ -36,4 +36,4 @@ const DesignerSection: React.FC = () => {
   );
 };
 
-export default DesignerSection;
+export default DesignerSections;

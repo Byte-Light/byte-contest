@@ -1,18 +1,17 @@
 
-
+import HowWorkss from '@/components/howWorkss/HowWorkss';
+import StepWithButton from '@/components/howWorkss/StepWithButton';
+import SupportsSection from '@/components/howWorkss/SupportsSection';
+import WhyUss from '@/components/howWorkss/WhyUss';
 import React from 'react';
-import HowWorks from '../../components/howWorks/HowWorks';
-import StepsWithButton from '../../components/howWorks/StepsWithButton';
-import WhyUs from '../../components/howWorks/WhyUs';
-import SupportSection from '../../components/howWorks/SupportSection';
 
 const HowItWorks = () => {
     return (
         <div>
-           <HowWorks />
-           <StepsWithButton />
-           <WhyUs />
-           <SupportSection />
+           <HowWorkss />
+           <StepWithButton />
+           <WhyUss />
+           <SupportsSection />
         </div>
     );
 };

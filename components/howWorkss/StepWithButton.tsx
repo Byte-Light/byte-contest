@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StepsWithButton = () => {
+const StepWithButton = () => {
   return (
     <section className="py-8">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
@@ -29,4 +29,4 @@ const StepsWithButton = () => {
   );
 };
 
-export default StepsWithButton;
+export default StepWithButton;

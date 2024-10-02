@@ -1,6 +1,6 @@
 import React from "react";
 
-const SupportSection: React.FC = () => {
+const SupportsSection: React.FC = () => {
   return (
     <div className="bg-white flex flex-col md:flex-row justify-between items-center p-6 md:p-16 space-y-8 md:space-y-0">
       {/* Text Section */}
@@ -37,4 +37,4 @@ const SupportSection: React.FC = () => {
   );
 };
 
-export default SupportSection;
+export default SupportsSection;

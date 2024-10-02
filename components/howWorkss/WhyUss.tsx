@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaStar, FaHeart, FaGlobe, FaLayerGroup } from 'react-icons/fa';
 
-const WhyUs = () => {
+const WhyUss = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -63,4 +63,4 @@ const WhyUs = () => {
   );
 };
 
-export default WhyUs;
+export default WhyUss;

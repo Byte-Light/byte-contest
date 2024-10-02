@@ -1,7 +1,7 @@
 import React from "react";
 import { FaPenNib, FaDesktop, FaFileAlt, FaBrush, FaBox, FaTag, FaBook } from 'react-icons/fa';
 
-const DesignSelection: React.FC = () => {
+const DesignSelections: React.FC = () => {
   return (
     <div className="bg-white p-6 md:p-12 rounded-lg shadow-md">
       <h3 className="text-xl md:text-2xl font-semibold mb-6">What do you need designed?</h3>
@@ -67,4 +67,4 @@ const DesignSelection: React.FC = () => {
   );
 };
 
-export default DesignSelection;
+export default DesignSelections;
