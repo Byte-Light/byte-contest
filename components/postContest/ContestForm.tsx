@@ -1,7 +1,6 @@
 // app/contest-form/page.tsx
 "use client";
 import { useState, FormEvent } from 'react';
-import { UserButton } from '@clerk/nextjs';
 import { FiFile, FiAward, FiTag, FiAlignLeft, FiEdit2 } from 'react-icons/fi';
 
 type ContestData = {
@@ -45,12 +44,7 @@ const ContestForm = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-blue-50 flex items-center justify-center p-6">
-      {/* Top Bar with User Management */}
-      <div className="absolute top-6 right-6">
-        {/* UserButton will show the profile management and log out options */}
-          <UserButton />
-      </div>
-
+      {/* Form Container */}
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-2xl bg-white p-10 rounded-3xl shadow-lg border border-gray-100"
