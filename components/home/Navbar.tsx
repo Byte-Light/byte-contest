@@ -17,7 +17,6 @@ const Navbar: React.FC = () => {
               Byte Contest
             </span>
           </Link>
-         
         </div>
 
         {/* Center Section: Navigation Links (Hidden on small screens) */}
@@ -41,12 +40,12 @@ const Navbar: React.FC = () => {
             Find a designer
           </Link>
           <Link
-              href="/contest-details"
-              className="block text-gray-800 hover:text-blue-600 transition duration-300"
-            >
-              Contest Details
-            </Link>
-          
+            href="/contest-list"
+            className="block text-gray-800 hover:text-blue-600 transition duration-300"
+          >
+            Contest List
+          </Link>
+
           {/* Conditionally render Post Contest if user is signed in */}
           {isSignedIn && (
             <Link
@@ -124,11 +123,12 @@ const Navbar: React.FC = () => {
             >
               Find a designer
             </Link>
+            
             <Link
-              href="/contest-details"
+              href="/contest-list"
               className="block text-gray-800 hover:text-blue-600 transition duration-300"
             >
-              Contest Details
+              Contest List
             </Link>
             
             {/* Conditionally render Post Contest if user is signed in */}

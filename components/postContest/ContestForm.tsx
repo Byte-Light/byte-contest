@@ -1,12 +1,11 @@
 // app/contest-form/page.tsx
 "use client";
 import { useState, FormEvent } from 'react';
-import { FiFile, FiAward, FiTag, FiAlignLeft, FiEdit2 } from 'react-icons/fi';
+import { FiAward, FiTag, FiAlignLeft, FiEdit2 } from 'react-icons/fi';
 
 type ContestData = {
   category: string;
   title: string;
-  picture: File | null;
   description: string;
   prize: string;
 };
@@ -15,7 +14,6 @@ const ContestForm = () => {
   const [formData, setFormData] = useState<ContestData>({
     category: '',
     title: '',
-    picture: null,
     description: '',
     prize: '',
   });
@@ -28,19 +26,28 @@ const ContestForm = () => {
     });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFormData({
-        ...formData,
-        picture: e.target.files[0],
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+  
+    try {
+      const response = await fetch('/api/contest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+  
+      if (response.ok) {
+        console.log('Contest submitted successfully');
+      } else {
+        console.error('Failed to submit contest');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
     }
   };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-  };
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-blue-50 flex items-center justify-center p-6">
@@ -88,25 +95,6 @@ const ContestForm = () => {
               onChange={handleChange}
               className="w-full pl-10 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               placeholder="e.g. Logo Design for Coffee Shop"
-              required
-            />
-          </div>
-        </div>
-
-        {/* Picture Input */}
-        <div className="mb-6 relative">
-          <label htmlFor="picture" className="block text-base font-medium text-gray-600 mb-2">
-            Picture
-          </label>
-          <div className="relative">
-            <FiFile className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="file"
-              id="picture"
-              name="picture"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="w-full pl-10 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               required
             />
           </div>
