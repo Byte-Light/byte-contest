@@ -18,6 +18,8 @@ const ContestForm = () => {
     prize: '',
   });
 
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -39,16 +41,23 @@ const ContestForm = () => {
       });
   
       if (response.ok) {
-        console.log('Contest submitted successfully');
+        setSubmissionStatus('success');
+        // Clear the form by resetting the formData state
+        setFormData({
+          category: '',
+          title: '',
+          description: '',
+          prize: '',
+        });
       } else {
-        console.error('Failed to submit contest');
+        setSubmissionStatus('error');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      setSubmissionStatus('error');
     }
   };
   
-
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-100 to-blue-50 flex items-center justify-center p-6">
       {/* Form Container */}
@@ -149,6 +158,18 @@ const ContestForm = () => {
             Submit Contest
           </button>
         </div>
+
+        {/* Success/Error Message */}
+        {submissionStatus === 'success' && (
+          <div className="mt-6 text-center text-green-600 font-semibold">
+            Contest submitted successfully!
+          </div>
+        )}
+        {submissionStatus === 'error' && (
+          <div className="mt-6 text-center text-red-600 font-semibold">
+            Failed to submit contest. Please try again.
+          </div>
+        )}
       </form>
     </div>
   );

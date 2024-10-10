@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
             href="/categories"
             className="text-gray-800 hover:text-blue-600 transition duration-300"
           >
-            Categories
+            Explore Contests
           </Link>
           <Link
             href="/how-it-works"
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
               href="/post-contest"
               className="text-gray-800 hover:text-blue-600 transition duration-300"
             >
-              Post Contest
+              Create Contest
             </Link>
           )}
         </div>
@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
               href="/categories"
               className="block text-gray-800 hover:text-blue-600 transition duration-300"
             >
-              Categories
+              Explore Contests
             </Link>
             <Link
               href="/how-it-works"
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
                 href="/post-contest"
                 className="block text-gray-800 hover:text-blue-600 transition duration-300"
               >
-                Post Contest
+                Create Contest
               </Link>
             )}
             
