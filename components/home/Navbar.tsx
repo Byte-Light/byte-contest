@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { UserButton, useUser } from "@clerk/nextjs";
+// Remove Clerk imports
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isSignedIn } = useUser(); // Determine if the user is signed in
+  const isSignedIn = false; // Replace with your own authentication logic
 
   return (
     <nav className="w-full bg-gray-100 shadow-lg">
@@ -57,14 +57,10 @@ const Navbar: React.FC = () => {
           )}
         </div>
 
-        {/* Right Section: UserButton/Login */}
+        {/* Right Section: Sign Up/Login */}
         <div className="flex items-center space-x-6">
-          {/* Display Sign Up/Login if not signed in; otherwise, show UserButton */}
-          {isSignedIn ? (
-            <div className="hidden md:block">
-              <UserButton />
-            </div>
-          ) : (
+          {/* Display Sign Up/Login if not signed in */}
+          {!isSignedIn && (
             <Link
               href="/sign-up"
               className="text-gray-800 hover:text-blue-600 transition duration-300"
@@ -123,14 +119,13 @@ const Navbar: React.FC = () => {
             >
               Find a designer
             </Link>
-            
             <Link
               href="/contest-list"
               className="block text-gray-800 hover:text-blue-600 transition duration-300"
             >
               Contest List
             </Link>
-            
+
             {/* Conditionally render Post Contest if user is signed in */}
             {isSignedIn && (
               <Link
@@ -140,7 +135,7 @@ const Navbar: React.FC = () => {
                 Create Contest
               </Link>
             )}
-            
+
             {/* Conditionally render Login button if user is not signed in */}
             {!isSignedIn && (
               <Link
