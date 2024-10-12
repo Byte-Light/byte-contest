@@ -1,11 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-// Remove Clerk imports
 
 const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const isSignedIn = false; // Replace with your own authentication logic
+  const [isOpen, setIsOpen] = useState(false); // For mobile menu toggle
 
   return (
     <nav className="w-full bg-gray-100 shadow-lg">
@@ -41,33 +39,32 @@ const Navbar: React.FC = () => {
           </Link>
           <Link
             href="/contest-list"
-            className="block text-gray-800 hover:text-blue-600 transition duration-300"
+            className="text-gray-800 hover:text-blue-600 transition duration-300"
           >
             Contest List
           </Link>
-
-          {/* Conditionally render Post Contest if user is signed in */}
-          {isSignedIn && (
-            <Link
-              href="/post-contest"
-              className="text-gray-800 hover:text-blue-600 transition duration-300"
-            >
-              Create Contest
-            </Link>
-          )}
+          <Link
+            href="/post-contest"
+            className="text-gray-800 hover:text-blue-600 transition duration-300"
+          >
+            Create Contest
+          </Link>
         </div>
 
         {/* Right Section: Sign Up/Login */}
         <div className="flex items-center space-x-6">
-          {/* Display Sign Up/Login if not signed in */}
-          {!isSignedIn && (
-            <Link
-              href="/sign-up"
-              className="text-gray-800 hover:text-blue-600 transition duration-300"
-            >
-              Sign Up
-            </Link>
-          )}
+          <Link
+            href="/sign-up"
+            className="text-gray-800 hover:text-blue-600 transition duration-300"
+          >
+            Sign Up
+          </Link>
+          <Link
+            href="/sign-in"
+            className="bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300"
+          >
+            Log in
+          </Link>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -78,7 +75,6 @@ const Navbar: React.FC = () => {
             aria-label="Toggle mobile menu"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {/* Icon for mobile */}
             <svg
               className="w-6 h-6"
               fill="none"
@@ -97,7 +93,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (shown when menu is open) */}
+      {/* Mobile Menu (Shown when menu is open) */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-md">
           <div className="px-6 py-4 space-y-4">
@@ -125,26 +121,24 @@ const Navbar: React.FC = () => {
             >
               Contest List
             </Link>
-
-            {/* Conditionally render Post Contest if user is signed in */}
-            {isSignedIn && (
-              <Link
-                href="/post-contest"
-                className="block text-gray-800 hover:text-blue-600 transition duration-300"
-              >
-                Create Contest
-              </Link>
-            )}
-
-            {/* Conditionally render Login button if user is not signed in */}
-            {!isSignedIn && (
-              <Link
-                href="/login"
-                className="block bg-blue-600 text-white text-center py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300"
-              >
-                Log in
-              </Link>
-            )}
+            <Link
+              href="/post-contest"
+              className="block text-gray-800 hover:text-blue-600 transition duration-300"
+            >
+              Create Contest
+            </Link>
+            <Link
+              href="/sign-up"
+              className="block text-gray-800 hover:text-blue-600 transition duration-300"
+            >
+              Sign Up
+            </Link>
+            <Link
+              href="/sign-in"
+              className="block bg-blue-600 text-white text-center py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300"
+            >
+              Log in
+            </Link>
           </div>
         </div>
       )}

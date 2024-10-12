@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const SignupForm = () => {
+const SignInForm = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +19,7 @@ const SignupForm = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/signup', {
+      const res = await fetch('/api/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -28,13 +28,13 @@ const SignupForm = () => {
       const data = await res.json();
       if (res.ok) {
         setMessage(data.message);
-        setTimeout(() => router.push('/sign-in'), 2000);
+        setTimeout(() => router.push('/post-contest'), 2000);
       } else {
         setMessage(data.message);
       }
     } catch (error) {
-      console.error('Signup failed:', error);
-      setMessage('Signup failed. Please try again.');
+      console.error('Sign-in failed:', error);
+      setMessage('Sign-in failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -42,24 +42,8 @@ const SignupForm = () => {
 
   return (
     <div className="max-w-md mx-auto mt-12 p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Signup</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center">Sign In</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="mt-1 w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-500"
-            placeholder="Enter your name"
-            required
-          />
-        </div>
-
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email
@@ -99,7 +83,7 @@ const SignupForm = () => {
           }`}
           disabled={loading}
         >
-          {loading ? 'Signing up...' : 'Signup'}
+          {loading ? 'Signing in...' : 'Sign In'}
         </button>
       </form>
 
@@ -114,16 +98,16 @@ const SignupForm = () => {
       )}
 
       <p className="mt-4 text-center text-sm text-gray-600">
-        Already have an account?{' '}
+        Don't have an account?{' '}
         <button
-          onClick={() => router.push('/sign-in')}
+          onClick={() => router.push('/sign-up')}
           className="text-indigo-500 hover:underline focus:outline-none"
         >
-          Sign In
+          Signup
         </button>
       </p>
     </div>
   );
 };
 
-export default SignupForm;
+export default SignInForm;
